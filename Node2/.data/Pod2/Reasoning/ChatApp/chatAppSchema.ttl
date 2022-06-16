@@ -1,0 +1,178 @@
+@prefix : <http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix solid-chat-ontology: <http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#> .
+@base <http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology> .
+
+<http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#hasContact
+solid-chat-ontology:hasContact rdf:type owl:ObjectProperty ;
+                               rdfs:domain solid-chat-ontology:ContactList ;
+                               rdfs:range solid-chat-ontology:Contact .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#hasMessage
+solid-chat-ontology:hasMessage rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf owl:topObjectProperty ;
+                               rdfs:domain solid-chat-ontology:Chat ;
+                               rdfs:range solid-chat-ontology:Message .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#hasReaction
+solid-chat-ontology:hasReaction rdf:type owl:ObjectProperty ;
+                                rdfs:domain solid-chat-ontology:Message ;
+                                rdfs:range solid-chat-ontology:Reaction .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#isReplyTo
+solid-chat-ontology:isReplyTo rdf:type owl:ObjectProperty ,
+                                       owl:FunctionalProperty ,
+                                       owl:AsymmetricProperty ,
+                                       owl:IrreflexiveProperty ;
+                              rdfs:domain solid-chat-ontology:Message ;
+                              rdfs:range solid-chat-ontology:Message .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#sameChatAs
+solid-chat-ontology:sameChatAs rdf:type owl:ObjectProperty ;
+                               rdfs:domain solid-chat-ontology:Chat ;
+                               rdfs:range solid-chat-ontology:Chat .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#emoji
+solid-chat-ontology:emoji rdf:type owl:DatatypeProperty ;
+                          rdfs:domain solid-chat-ontology:Reaction ;
+                          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#emojiSender
+solid-chat-ontology:emojiSender rdf:type owl:DatatypeProperty ;
+                                rdfs:domain solid-chat-ontology:Reaction ;
+                                rdfs:range xsd:anyURI .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#hasParticipant
+solid-chat-ontology:hasParticipant rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain solid-chat-ontology:Chat ;
+                                   rdfs:range xsd:anyURI .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#hasSender
+solid-chat-ontology:hasSender rdf:type owl:DatatypeProperty ;
+                              rdfs:domain solid-chat-ontology:Message ;
+                              rdfs:range xsd:anyURI .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#name
+solid-chat-ontology:name rdf:type owl:DatatypeProperty ;
+                         rdfs:domain solid-chat-ontology:Chat ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#text
+solid-chat-ontology:text rdf:type owl:DatatypeProperty ;
+                         rdfs:domain solid-chat-ontology:Message ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#timestamp
+solid-chat-ontology:timestamp rdf:type owl:DatatypeProperty ;
+                              rdfs:domain solid-chat-ontology:Message ;
+                              rdfs:range xsd:dateTimeStamp .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#webId
+solid-chat-ontology:webId rdf:type owl:DatatypeProperty ;
+                          rdfs:domain solid-chat-ontology:Contact ;
+                          rdfs:range xsd:anyURI .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Chat
+solid-chat-ontology:Chat rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Contact
+solid-chat-ontology:Contact rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#ContactList
+solid-chat-ontology:ContactList rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Message
+solid-chat-ontology:Message rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Reaction
+solid-chat-ontology:Reaction rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Alice
+solid-chat-ontology:Alice rdf:type owl:NamedIndividual ,
+                                   solid-chat-ontology:Contact .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Bob
+solid-chat-ontology:Bob rdf:type owl:NamedIndividual ,
+                                 solid-chat-ontology:Contact .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Chat0
+solid-chat-ontology:Chat0 rdf:type owl:NamedIndividual ,
+                                   solid-chat-ontology:Chat ;
+                          solid-chat-ontology:hasMessage solid-chat-ontology:Message0 ,
+                                                         solid-chat-ontology:Message1 .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Chat1
+solid-chat-ontology:Chat1 rdf:type owl:NamedIndividual ,
+                                   solid-chat-ontology:Chat ;
+                          solid-chat-ontology:hasMessage solid-chat-ontology:Message0 ,
+                                                         solid-chat-ontology:Message1 .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#FriendsList
+solid-chat-ontology:FriendsList rdf:type owl:NamedIndividual ,
+                                         solid-chat-ontology:ContactList ;
+                                solid-chat-ontology:hasContact solid-chat-ontology:Alice ,
+                                                               solid-chat-ontology:Bob .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Message0
+solid-chat-ontology:Message0 rdf:type owl:NamedIndividual ,
+                                      solid-chat-ontology:Message ;
+                             solid-chat-ontology:hasReaction solid-chat-ontology:Reaction0 .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Message1
+solid-chat-ontology:Message1 rdf:type owl:NamedIndividual ,
+                                      solid-chat-ontology:Message ;
+                             solid-chat-ontology:isReplyTo solid-chat-ontology:Message0 .
+
+
+###  http://www.semanticweb.org/warre/ontologies/2022/3/solid-chat-ontology#Reaction0
+solid-chat-ontology:Reaction0 rdf:type owl:NamedIndividual ,
+                                       solid-chat-ontology:Reaction .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

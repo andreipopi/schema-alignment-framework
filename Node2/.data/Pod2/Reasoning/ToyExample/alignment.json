@@ -1,0 +1,6 @@
+["(?uuu rdf:type sosa:Sensor) -> (?uuu rdf:type saref:Device)",
+"(?uuu rdf:type saref:Device) -> (?uuu rdf:type sosa:Sensor)",
+"(?uuu rdf:type saref:Property) -> (?uuu rdf:type sosa:ObservableProperty)", 
+"(?uuu rdf:type sosa:ObservableProperty) -> (?uuu rdf:type saref:Property)",
+"(?uuu saref:measurementMadeBy ?yyy) -> (?uuu sosa:madeBySensor ?yyy)",
+"(?uuu sosa:madeBySensor ?yyy) -> (?uuu saref:measurementMadeBy ?yyy)"]

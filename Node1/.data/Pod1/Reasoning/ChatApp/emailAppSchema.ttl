@@ -1,0 +1,186 @@
+@prefix : <http://example.com/email#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix email: <http://example.com/email#> .
+@base <http://example.com/email> .
+
+<http://example.com/email> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com/email#has_contact
+email:has_contact rdf:type owl:ObjectProperty ;
+                  rdfs:domain email:contact_list ;
+                  rdfs:range email:contact ;
+                  rdfs:comment "Used to specify that a contact is in a contact_list" .
+
+
+###  http://example.com/email#has_member
+email:has_member rdf:type owl:ObjectProperty ;
+                 rdfs:domain email:thread ;
+                 rdfs:range email:contact ;
+                 rdfs:comment "Used to indicate the participating contacts of a thread" .
+
+
+###  http://example.com/email#has_owner
+email:has_owner rdf:type owl:ObjectProperty ;
+                rdfs:domain email:contact_list ;
+                rdfs:range email:contact ;
+                rdfs:comment "Denotes the owner of this contact list" .
+
+
+###  http://example.com/email#in_thread
+email:in_thread rdf:type owl:ObjectProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain email:email ;
+                rdfs:range email:thread ;
+                rdfs:comment "Used to specify the thread in which an email is sent" .
+
+
+###  http://example.com/email#reply_to
+email:reply_to rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ,
+                        owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty ;
+               rdfs:domain email:email ;
+               rdfs:range email:email ;
+               rdfs:comment "Optionally add a reference to the email that is being replied to" .
+
+
+###  http://example.com/email#same_thread_as
+email:same_thread_as rdf:type owl:ObjectProperty ;
+                     rdfs:comment "Used to denoted that a copy of the same thread is available on the pod of another group member" .
+
+
+###  http://example.com/email#sent_by
+email:sent_by rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain email:email ;
+              rdfs:range email:contact ;
+              rdfs:comment "Defines the sender of an email" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.com/email#contact_list_name
+email:contact_list_name rdf:type owl:DatatypeProperty ,
+                                 owl:FunctionalProperty ;
+                        rdfs:domain email:contact_list ;
+                        rdfs:range xsd:string .
+
+
+###  http://example.com/email#email_body
+email:email_body rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain email:email ;
+                 rdfs:range xsd:string .
+
+
+###  http://example.com/email#email_subject
+email:email_subject rdf:type owl:DatatypeProperty ,
+                             owl:FunctionalProperty ;
+                    rdfs:domain email:email ;
+                    rdfs:range xsd:string .
+
+
+###  http://example.com/email#email_timestamp
+email:email_timestamp rdf:type owl:DatatypeProperty ,
+                               owl:FunctionalProperty ;
+                      rdfs:domain email:email ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Unix epoch of the moment this message was sent" .
+
+
+###  http://example.com/email#thread_name
+email:thread_name rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain email:thread ;
+                  rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com/email#contact
+email:contact rdf:type owl:Class ;
+              rdfs:subClassOf foaf:Person .
+
+
+###  http://example.com/email#contact_list
+email:contact_list rdf:type owl:Class .
+
+
+###  http://example.com/email#email
+email:email rdf:type owl:Class .
+
+
+###  http://example.com/email#thread
+email:thread rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com/email#alice
+email:alice rdf:type owl:NamedIndividual ,
+                     email:contact .
+
+
+###  http://example.com/email#bob
+email:bob rdf:type owl:NamedIndividual ,
+                   email:contact .
+
+
+###  http://example.com/email#email0
+email:email0 rdf:type owl:NamedIndividual ,
+                      email:email ;
+             email:in_thread email:thread0 ;
+             email:sent_by email:alice ;
+             email:email_body "Hello Bob, this is my first email to you :) Alice" ;
+             email:email_subject "Hello, world!" ;
+             email:email_timestamp "2022-04-18T10:00:00"^^xsd:dateTime .
+
+
+###  http://example.com/email#email1
+email:email1 rdf:type owl:NamedIndividual ,
+                      email:email ;
+             email:in_thread email:thread0 ;
+             email:reply_to email:email0 ;
+             email:sent_by email:bob ;
+             email:email_body "Hi Alice! Thank you for sending me an email. boy do i love this :)" ;
+             email:email_subject "RE: Hello, world!" ;
+             email:email_timestamp "2022-04-18T10:15:00"^^xsd:dateTime .
+
+
+###  http://example.com/email#friend_list
+email:friend_list rdf:type owl:NamedIndividual ,
+                           email:contact_list ;
+                  email:has_contact email:alice ,
+                                    email:bob ;
+                  email:has_owner email:alice ;
+                  email:contact_list_name "Freindz <3" .
+
+
+###  http://example.com/email#thread0
+email:thread0 rdf:type owl:NamedIndividual ,
+                       email:thread ;
+              email:has_member email:alice ,
+                               email:bob ;
+              email:thread_name "conversation with alice and bob" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

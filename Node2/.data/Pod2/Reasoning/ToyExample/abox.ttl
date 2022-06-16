@@ -1,0 +1,11 @@
+@prefix sosa:  <http://www.w3.org/ns/sosa/> .
+@base <http://localhost:3000/Pod2/Reasoning/abox.ttl/>.
+
+:obs1 a sosa:Observation .
+:obs1 sosa:hasSimpleResult "23.4"^^xsd:double .
+
+:obs1 sosa:madeBySensor :tempSensor .
+
+:tempSensor a  sosa:Sensor .
+:tempSensor sosa:observes :temperature.
+:temperature a sosa:ObservableProperty.

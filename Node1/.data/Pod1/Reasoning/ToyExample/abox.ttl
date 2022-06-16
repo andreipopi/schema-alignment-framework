@@ -1,0 +1,10 @@
+@prefix saref: <https://saref.etsi.org/core/> .
+@base <http://localhost:3000/Pod1/Reasoning/tbox.ttl/>.
+
+:obs0 a saref:Measurement .
+:obs0 saref:hasValue "20.1"^^xsd:double .
+:obs0 saref:measurementMadeBy :tempSensor .
+
+:tempSensor a  saref:Device .
+:tempSensor saref:measuresProperty :temperature.
+:temperature a saref:Property.

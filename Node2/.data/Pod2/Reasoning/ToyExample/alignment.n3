@@ -1,0 +1,6 @@
+(?uuu rdf:type http://www.w3.org/ns/sosa/Sensor) -> (?uuu rdf:type https://saref.etsi.org/core/Device)
+(?uuu rdf:type https://saref.etsi.org/core/Device) -> (?uuu rdf:type http://www.w3.org/ns/sosa/Sensor)
+(?uuu rdf:type https://saref.etsi.org/core/Property) -> (?uuu rdf:type http://www.w3.org/ns/sosa/ObservableProperty)
+(?uuu rdf:type http://www.w3.org/ns/sosa/ObservableProperty) -> (?uuu rdf:type https://saref.etsi.org/core/Property)
+(?uuu https://saref.etsi.org/core/measurementMadeBy ?yyy) -> (?uuu http://www.w3.org/ns/sosa/madeBySensor ?yyy)
+(?uuu http://www.w3.org/ns/sosa/madeBySensor ?yyy) -> (?uuu https://saref.etsi.org/core/measurementMadeBy ?yyy)
