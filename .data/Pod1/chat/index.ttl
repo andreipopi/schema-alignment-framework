@@ -1,0 +1,2 @@
+<http://localhost:3000/Pod1/chat/threads/Chat1-ahrzgS.ttl#Chat1-ahrzgS> a <http://solid-chat.wadu436.be/Chat>.
+<http://localhost:3000/Pod1/chat/threads/Chat1-qD1cUW.ttl#Chat1-qD1cUW> a <http://solid-chat.wadu436.be/Chat>.

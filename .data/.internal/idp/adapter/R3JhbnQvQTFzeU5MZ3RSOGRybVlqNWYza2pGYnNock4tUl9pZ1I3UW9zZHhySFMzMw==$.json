@@ -1,0 +1,1 @@
+{"iat":1655817269,"exp":1657026869,"accountId":"http://localhost:3000/Pod1/profile/card#me","clientId":"Trh2vDMSqQesWnT_0miMo","kind":"Grant","jti":"A1syNLgtR8drmYj5f3kjFbshrN-R_igR7QosdxrHS33","rejected":{"openid":{"scope":"offline_access"}},"openid":{"scope":"openid offline_access webid"},"resources":{"http://example.com/":"webid"}}

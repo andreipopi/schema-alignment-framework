@@ -1,0 +1,1 @@
+{"iat":1655378997,"exp":1656588597,"accountId":"http://localhost:3000/Pod1/profile/card#me","clientId":"FwWE3IhFr5cSsXuH-ypZa","kind":"Grant","jti":"Sgh9pZ14QTaqGsZMDkaV5VOgJkmHPfi0ayvbaIu6k5R","rejected":{"openid":{"scope":"offline_access"}},"openid":{"scope":"openid offline_access webid"},"resources":{"http://example.com/":"webid"}}
